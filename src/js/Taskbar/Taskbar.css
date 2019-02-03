@@ -1,0 +1,61 @@
+.Taskbar {
+    background: #BFB8BF;
+    border-top-color: #FFF;
+    border-top-style: solid;
+    border-top-width: 2px;
+    bottom: 0;
+    height: 33px;
+    left: 0;
+    padding: 2px;
+    position: absolute;
+    right: 0;
+    width: 100%;
+}
+
+/* Taskbar Buttons */
+.Taskbar--button {
+    background: #BFB8BF;
+    border-bottom-color: #000;
+    border-left-color: #FFF;
+    border-right-color: #000;
+    border-top-color: #FFF;
+    border-width: 2px;
+    height: 33px;
+    padding: 2px;
+}
+
+.Taskbar--button:focus {
+    outline: none;
+}
+
+.Taskbar--button:active {
+    border-bottom-color: #FFF;
+    border-left-color: #000;
+    border-right-color: #FFF;
+    border-style: solid;
+    border-top-color: #000;
+}
+
+.Taskbar--button:active .Taskbar--button--innerContainer {
+    border: 2px dotted #000;
+}
+
+.Taskbar--button--innerContainer {
+    border: 2px solid transparent;
+    display: inline-block;
+}
+
+/* Taskbar Start Icon */
+.Taskbar--startIcon {
+    height: 20px;
+    width: 20px;
+}
+
+.Taskbar--startLabel {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 20px;
+    margin-left: 3px;
+    vertical-align: top;
+}
