@@ -3,20 +3,51 @@ import './Taskbar.css';
 
 import startIcon from '../../images/start_icon.png';
 
-const Start = (props) => {
+const StartButton = () => {
+    return (
+        <button className='Taskbar_startButton Taskbar_button'>
+            <span className='Taskbar_button_innerContainer'>
+                <img src={startIcon} className='Taskbar_button_icon' alt='' />
+                <span className='Taskbar_button_label'>Start</span>
+            </span>
+        </button>
+    );
+}
 
+const ApplicationButton = ({application, selectApplication}) => {
+    let classes = 'Taskbar_appButton Taskbar_button';
+    classes += application.selected ? ' Taskbar_button--selected' : '';
+    return (
+        <button
+            className={classes}
+            onClick={() => selectApplication(application.id)}
+        >
+            <span className='Taskbar_button_innerContainer'>
+                <img src={ application.icon } className='Taskbar_button_icon' alt='' />
+                <span className='Taskbar_button_label'>{ application.label }</span>
+            </span>
+        </button>
+    );
+}
+
+const renderApplicationButtons = (applications, selectApplication) => {
+    return applications.map(application => {
+        return (
+            <ApplicationButton key={application.id} application={application} selectApplication={selectApplication}/>
+        );
+    });
 }
 
 class Taskbar extends Component {
     render() {
+        const { applications, selectApplication } = this.props;
+
         return (
             <div className='Taskbar'>
-                <button className='Taskbar--startButton Taskbar--button'>
-                    <span className='Taskbar--button--innerContainer'>
-                        <img src={startIcon} className='Taskbar--startIcon' alt='' />
-                        <span className='Taskbar--startLabel'>Start</span>
-                    </span>
-                </button>
+                <StartButton />
+                <div className='Taskbar_applications'>
+                    { renderApplicationButtons(applications, selectApplication) }
+                </div>
             </div>
         );
     }
