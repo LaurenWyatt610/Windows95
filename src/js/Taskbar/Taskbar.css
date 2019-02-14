@@ -13,22 +13,24 @@
 }
 
 /* Taskbar Buttons */
-.Taskbar--button {
+.Taskbar_button {
     background: #BFB8BF;
     border-bottom-color: #000;
     border-left-color: #FFF;
     border-right-color: #000;
     border-top-color: #FFF;
     border-width: 2px;
+    vertical-align: middle;
     height: 33px;
+    max-width: 200px;
     padding: 2px;
 }
 
-.Taskbar--button:focus {
+.Taskbar_button:focus {
     outline: none;
 }
 
-.Taskbar--button:active {
+.Taskbar_button:active {
     border-bottom-color: #FFF;
     border-left-color: #000;
     border-right-color: #FFF;
@@ -36,26 +38,49 @@
     border-top-color: #000;
 }
 
-.Taskbar--button:active .Taskbar--button--innerContainer {
+.Taskbar_button--selected {
+    border-bottom-color: #FFF;
+    border-left-color: #000;
+    border-right-color: #FFF;
+    border-style: solid;
+    border-top-color: #000;
+    background: #dfd9df;
+}
+
+.Taskbar_button:active .Taskbar_button_innerContainer {
     border: 2px dotted #000;
 }
 
-.Taskbar--button--innerContainer {
+.Taskbar_button_innerContainer {
     border: 2px solid transparent;
     display: inline-block;
 }
 
-/* Taskbar Start Icon */
-.Taskbar--startIcon {
+.Taskbar_button_icon {
     height: 20px;
     width: 20px;
 }
 
-.Taskbar--startLabel {
+.Taskbar_button_label {
     display: inline-block;
     font-size: 13px;
     font-weight: bold;
     line-height: 20px;
     margin-left: 3px;
     vertical-align: top;
+}
+
+.Taskbar_startButton {
+    width: 70px;
+    text-align: center;
+}
+
+/* Taskbar Applications */
+.Taskbar_applications {
+    display: inline-block;
+    width: calc(100% - 200px);
+}
+
+.Taskbar_applications .Taskbar_button {
+    margin-left: 3px;
 }
