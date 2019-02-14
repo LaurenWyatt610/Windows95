@@ -35,7 +35,6 @@ class App extends Component {
 
     selectApplication(id) {
         let newApplicationsState = [...this.state.applications];
-        console.log(newApplicationsState);
 
         newApplicationsState.forEach(application => {
             if (id === application.id) {
