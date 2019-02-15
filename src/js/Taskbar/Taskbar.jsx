@@ -38,19 +38,15 @@ const renderApplicationButtons = (applications, selectApplication) => {
     });
 }
 
-class Taskbar extends Component {
-    render() {
-        const { applications, selectApplication } = this.props;
+export const Taskbar = (props) => {
+    const { applications, selectApplication } = props;
 
-        return (
-            <div className='Taskbar'>
-                <StartButton />
-                <div className='Taskbar_applications'>
-                    { renderApplicationButtons(applications, selectApplication) }
-                </div>
+    return (
+        <div className='Taskbar'>
+            <StartButton />
+            <div className='Taskbar_applications'>
+                { renderApplicationButtons(applications, selectApplication) }
             </div>
-        );
-    }
+        </div>
+    );
 }
-
-export default Taskbar;

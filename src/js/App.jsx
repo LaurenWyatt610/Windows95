@@ -2,7 +2,9 @@
 import React, { Component } from 'react';
 
 // Comopnents
-import Taskbar from './Taskbar/Taskbar.jsx';
+import { Desktop } from './Desktop/Desktop.jsx';
+import { Program } from './Program/Program.jsx';
+import { Taskbar } from './Taskbar/Taskbar.jsx';
 
 // Assets
 import './App.css';
@@ -21,7 +23,22 @@ const mockApplicationData = [
         icon: IMAGES.START,
         selected: false
     }
-]
+];
+
+const mockIconData = [
+    {
+        id: 1,
+        label: 'Recycle Bin',
+        icon: IMAGES.TRASHCAN_EMPTY,
+        selected: false
+    },
+    {
+        id: 2,
+        label: 'My Computer',
+        icon: IMAGES.MY_COMPUTER,
+        selected: false
+    }
+];
 
 class App extends Component {
     constructor(props) {
@@ -52,7 +69,9 @@ class App extends Component {
     render() {
         return (
             <div className="windows">
-                <Taskbar applications={mockApplicationData} selectApplication={this.selectApplication}/>
+                <Desktop icons={mockIconData} />
+                <Taskbar applications={mockApplicationData} selectApplication={this.selectApplication} />
+                <Program />
             </div>
         );
     }

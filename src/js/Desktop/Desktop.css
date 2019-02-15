@@ -1,0 +1,40 @@
+.Desktop {
+    align-content: end;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: calc(100% - 40px);
+}
+
+/* Desktop Icons */
+.DesktopIcon {
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    height: 90px;
+    margin: 0 10px;
+    padding: 0;
+    width: 90px;
+    font-size: 13px;
+}
+
+.DesktopIcon_img {
+    width: 40px;
+    height: 40px;
+}
+
+.DesktopIcon_name {
+    display: inline-block;
+}
+
+.DesktopIcon--selected .DesktopIcon_img {
+    -webkit-filter: brightness(0.5) sepia(100%) saturate(300%) hue-rotate(180deg);
+    filter: brightness(0.5) sepia(100%) saturate(300%) hue-rotate(180deg);
+}
+
+.DesktopIcon--selected .DesktopIcon_name {
+    background: #000080;
+    display: inline-block;
+}

@@ -1,0 +1,86 @@
+.Program {
+    background: #c0c0c0;
+    border-bottom-color: #000;
+    border-left-color: #FFF;
+    border-right-color: #000;
+    border-style: solid;
+    border-top-color: #FFF;
+    border-width: 2px;
+    bottom: 70px;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 4px;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    width: 700px;
+}
+
+/* Program Header */
+.ProgramHeader {
+    background: #000080;
+    padding: 4px;
+    height: 25px;
+    display: flex;
+}
+
+.ProgramHeader_img {
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+}
+
+.ProgramHeader_label {
+    color: #fff;
+    font-weight: bold;
+    line-height: 25px;
+    flex-grow: 1;
+}
+
+.ProgramHeader_button {
+    background: #c0c0c0;
+    border-bottom-color: #000;
+    border-left-color: #FFF;
+    border-right-color: #000;
+    border-top-color: #FFF;
+    border-width: 2px;
+    height: 26px;
+    width: 26px;
+    line-height: 25px;
+    padding: 0;
+    margin-left: 1px;
+}
+
+.ProgramHeader_button.ProgramHeader_button--close {
+    margin-left: 3px;
+}
+
+/* Program Commands */
+.ProgramCommand_list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.ProgramCommand_list-item {
+    display: inline-block;
+    padding: 5px 10px;
+}
+
+.ProgramCommand_letter {
+    text-decoration: underline;
+}
+
+/* Program Conteent */
+.ProgramContent {
+    width: calc(100% - 5px);
+    height: calc(100% - 65px);
+    background: #fff;
+    border-bottom-color: #fff;
+    border-left-color: #000;
+    border-right-color: #fff;
+    border-top-color: #000;
+    border-width: 2px;
+    border-style: solid;
+}
