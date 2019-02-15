@@ -1,5 +1,5 @@
 .Taskbar {
-    background: #BFB8BF;
+    background: #c0c0c0;
     border-top-color: #FFF;
     border-top-style: solid;
     border-top-width: 2px;
@@ -14,7 +14,7 @@
 
 /* Taskbar Buttons */
 .Taskbar_button {
-    background: #BFB8BF;
+    background: #c0c0c0;
     border-bottom-color: #000;
     border-left-color: #FFF;
     border-right-color: #000;

@@ -1,7 +1,16 @@
 body {
-    background: #00787F;
-    height: 100vh;
+    background: #008080;
     margin: 0;
     overflow: hidden;
-    widows: 100vw;
+    width: 100%;
+    font-family: system-ui;
+}
+
+body,
+.windows {
+    height: 100vh;
+}
+
+button:focus {
+    outline: none;
 }
