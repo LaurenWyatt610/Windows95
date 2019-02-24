@@ -8,70 +8,93 @@ import { Taskbar } from './Taskbar/Taskbar.jsx';
 
 // Assets
 import './App.css';
-import IMAGES from './images.js';
-
-const mockApplicationData = [
-    {
-        id: 1,
-        label: 'Untitled Application',
-        icon: IMAGES.START,
-        selected: false
-    },
-    {
-        id: 2,
-        label: 'Untitled Application 2',
-        icon: IMAGES.START,
-        selected: false
-    }
-];
-
-const mockIconData = [
-    {
-        id: 1,
-        label: 'Recycle Bin',
-        icon: IMAGES.TRASHCAN_EMPTY,
-        selected: false
-    },
-    {
-        id: 2,
-        label: 'My Computer',
-        icon: IMAGES.MY_COMPUTER,
-        selected: false
-    }
-];
+import { PROGRAM_DATA } from './program_data.js';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            applications: mockApplicationData
+            openPrograms: []
         }
 
+        this.isProgramOpen = this.isProgramOpen.bind(this);
         this.selectApplication = this.selectApplication.bind(this);
+        this.selectProgram = this.selectProgram.bind(this);
+        this.closeProgram = this.closeProgram.bind(this);
+
+        this.renderOpenPrograms = this.renderOpenPrograms.bind(this);
+    }
+
+    isProgramOpen(id) {
+        const { openPrograms } = this.state;
+
+        return !!openPrograms.find((program) => {
+            return program.id === id;
+        })
     }
 
     selectApplication(id) {
-        let newApplicationsState = [...this.state.applications];
+        let newOpenPrograms = [...this.state.openPrograms];
 
-        newApplicationsState.forEach(application => {
-            if (id === application.id) {
-                application.selected = true;
+        newOpenPrograms.forEach(program => {
+            if (id === program.id) {
+                program.taskbarButtonSelected = true;
             } else {
-                application.selected = false;
+                program.taskbarButtonSelected = false;
             }
         });
 
         this.setState(() => ({
-            applications: newApplicationsState
+            openPrograms: newOpenPrograms
         }));
     }
 
+    selectProgram(id) {
+        const openProgram = PROGRAM_DATA.find(program => {
+            return program.id === id;
+        });
+        if (!this.isProgramOpen(id)) {
+            this.setState((prevState) => {
+                const newOpenPrograms = [...prevState.openPrograms, openProgram];
+                return {
+                    openPrograms: newOpenPrograms
+                }
+            }, () => this.selectApplication(id));
+        }
+    }
+
+    closeProgram(id) {
+        this.setState((prevState) => {
+            const newOpenPrograms = prevState.openPrograms.reduce((accumulator, program) => {
+                if(program.id !== id) {
+                    accumulator.push(program);
+                }
+                return accumulator;
+            }, []);
+
+            return {
+                openPrograms: newOpenPrograms
+            }
+        });
+    }
+
+    renderOpenPrograms() {
+        const { openPrograms } = this.state;
+
+        return openPrograms.map(openProgram => {
+            return (
+                <Program key={openProgram.id} program={openProgram} closeProgram={this.closeProgram}/>
+            );
+        });
+    }
+
     render() {
+        const { openPrograms } = this.state;
         return (
             <div className="windows">
-                <Desktop icons={mockIconData} />
-                <Taskbar applications={mockApplicationData} selectApplication={this.selectApplication} />
-                <Program />
+                <Desktop icons={PROGRAM_DATA} selectProgram={this.selectProgram}/>
+                <Taskbar applications={openPrograms} selectApplication={this.selectApplication} />
+                { this.renderOpenPrograms() }
             </div>
         );
     }

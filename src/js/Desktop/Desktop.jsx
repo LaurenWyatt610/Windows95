@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
 import './Desktop.css';
 
-const DesktopIcon = ({icon}) => {
+const DesktopIcon = ({icon, selectProgram}) => {
     let classes = 'DesktopIcon';
-    classes += icon.selected ? ' DesktopIcon--selected' : '';
+    classes += icon.desktopIconSelected ? ' DesktopIcon--selected' : '';
     return (
-        <button className={ classes }>
+        <button className={ classes } onDoubleClick={() => selectProgram(icon.id)}>
             <img src={ icon.icon } className='DesktopIcon_img' alt='' />
             <div className='DesktopIcon_name'>{ icon.label }</div>
         </button>
     );
 };
 
-const renderDesktopIcons = (icons) => {
+const renderDesktopIcons = (icons, selectProgram) => {
     return icons.map(icon => {
         return (
-            <DesktopIcon key={icon.id} icon={icon} />
+            <DesktopIcon key={icon.id} icon={icon} selectProgram={selectProgram} />
         );
     });
 }
 
 export const Desktop = (props) => {
-    const { icons } = props;
+    const { icons, selectProgram } = props;
     return (
         <div className='Desktop'>
-            { renderDesktopIcons(icons) }
+            { renderDesktopIcons(icons, selectProgram) }
         </div>
     );
 }

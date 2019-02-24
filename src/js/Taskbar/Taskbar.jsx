@@ -16,7 +16,7 @@ const StartButton = () => {
 
 const ApplicationButton = ({application, selectApplication}) => {
     let classes = 'Taskbar_appButton Taskbar_button';
-    classes += application.selected ? ' Taskbar_button--selected' : '';
+    classes += application.taskbarButtonSelected ? ' Taskbar_button--selected' : '';
     return (
         <button
             className={classes}
