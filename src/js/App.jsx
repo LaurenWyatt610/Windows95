@@ -13,19 +13,23 @@ import { PROGRAM_DATA } from './program_data.js';
 
 const PROGRAM_LIMIT = 3;
 
+// TODO: deep colies of objects. Just realized spreads are shallow
+
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            possiblePrograms: [...PROGRAM_DATA],
             openPrograms: [],
             programCrashError: false
         }
 
         this.isProgramOpen = this.isProgramOpen.bind(this);
         this.selectApplication = this.selectApplication.bind(this);
-        this.selectProgram = this.selectProgram.bind(this);
+        this.openProgram = this.openProgram.bind(this);
         this.closeProgram = this.closeProgram.bind(this);
         this.closeError = this.closeError.bind(this);
+        this.selectProgram = this.selectProgram.bind(this);
 
         this.renderOpenPrograms = this.renderOpenPrograms.bind(this);
     }
@@ -54,7 +58,7 @@ class App extends Component {
         }));
     }
 
-    selectProgram(id) {
+    openProgram(id) {
         const { openPrograms } = this.state;
 
         if (PROGRAM_LIMIT === openPrograms.length) {
@@ -65,13 +69,13 @@ class App extends Component {
                 }
             });
         } else {
-            const openProgram = PROGRAM_DATA.find(program => {
+            const newOpenProgram = PROGRAM_DATA.find(program => {
                 return program.id === id;
             });
             
             if (!this.isProgramOpen(id)) {
-                this.setState((prevState) => {
-                    const newOpenPrograms = [...prevState.openPrograms, openProgram];
+                this.setState(prevState => {
+                    const newOpenPrograms = [...prevState.openPrograms, newOpenProgram];
                     return {
                         openPrograms: newOpenPrograms
                     }
@@ -80,8 +84,20 @@ class App extends Component {
         }
     }
 
+    selectProgram(id) {
+        this.setState(prevState => {
+            const newPossiblePrograms = [...prevState.possiblePrograms];
+            newPossiblePrograms.forEach(program => {
+                program.id === id ? program.desktopIconSelected = true : program.desktopIconSelected = false;
+            });
+            return {
+                possiblePrograms: newPossiblePrograms
+            };
+        });
+    }
+
     closeProgram(id) {
-        this.setState((prevState) => {
+        this.setState(prevState => {
             let openProgramId;
 
             const newOpenPrograms = prevState.openPrograms.reduce((accumulator, program) => {
@@ -124,10 +140,10 @@ class App extends Component {
     }
 
     render() {
-        const { openPrograms, programCrashError } = this.state;
+        const { possiblePrograms, openPrograms, programCrashError } = this.state;
         return (
             <div className="windows">
-                <Desktop icons={PROGRAM_DATA} selectProgram={this.selectProgram}/>
+                <Desktop icons={possiblePrograms} openProgram={this.openProgram} selectProgram={this.selectProgram}/>
                 <Taskbar applications={openPrograms} selectApplication={this.selectApplication} />
                 { this.renderOpenPrograms() }
                 { programCrashError && <ProgramCrashError closeError={this.closeError}/> }
