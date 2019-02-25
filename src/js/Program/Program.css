@@ -14,15 +14,19 @@
     position: absolute;
     right: 0;
     top: 30px;
-    width: 700px;
+    width: 65%;
 }
 
 /* Program Header */
 .ProgramHeader {
-    background: #000080;
+    background: #808080;
     padding: 4px;
     height: 25px;
     display: flex;
+}
+
+.ProgramHeader--selected {
+    background: #000080;
 }
 
 .ProgramHeader_img {
@@ -50,6 +54,18 @@
     line-height: 25px;
     padding: 0;
     margin-left: 1px;
+}
+
+.ProgramHeader_button:focus {
+    outline: none;
+}
+
+.ProgramHeader_button:active {
+    border-bottom-color: #FFF;
+    border-left-color: #000;
+    border-right-color: #FFF;
+    border-style: solid;
+    border-top-color: #000;
 }
 
 .ProgramHeader_button.ProgramHeader_button--close {

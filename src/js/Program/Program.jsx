@@ -5,7 +5,7 @@ import IMAGES from '../images.js';
 
 const ProgramHeader = ({program, closeProgram}) => {
     return (
-        <div className='ProgramHeader'>
+        <div className={`ProgramHeader${program.taskbarButtonSelected ? ' ProgramHeader--selected' : ''}`}>
             <img src={program.icon} className='ProgramHeader_img' />
             <span className='ProgramHeader_label'>{program.label}</span>
             <div className='ProgramHeader_buttons'>

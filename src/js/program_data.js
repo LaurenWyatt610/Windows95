@@ -16,5 +16,21 @@ export const PROGRAM_DATA = [
         label: 'My Computer',
         offset: 20,
         taskbarButtonSelected: false
+    },
+    {
+        desktopIconSelected: false,
+        icon: IMAGES.TEXT_DOCUMENT,
+        id: 3,
+        label: 'About Me',
+        offset: -20,
+        taskbarButtonSelected: false
+    },
+    {
+        desktopIconSelected: false,
+        icon: IMAGES.TEXT_DOCUMENT,
+        id: 4,
+        label: 'Random',
+        offset: -10,
+        taskbarButtonSelected: false
     }
 ];

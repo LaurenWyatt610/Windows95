@@ -1,0 +1,81 @@
+.Error {
+    background: #c0c0c0;
+    border-bottom-color: #000;
+    border-left-color: #FFF;
+    border-right-color: #000;
+    border-style: solid;
+    border-top-color: #FFF;
+    border-width: 2px;
+    bottom: 0;
+    height: 200px;
+    left: 0;
+    margin: auto;
+    padding: 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 65%;
+    max-width: 500px;
+}
+
+/* ErrorHeader */
+.ErrorHeader {
+    background: #000080;
+    padding: 4px;
+    height: 25px;
+    display: flex;
+}
+
+.ErrorHeader_img {
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+}
+
+.ErrorHeader_label {
+    color: #fff;
+    font-weight: bold;
+    line-height: 25px;
+    flex-grow: 1;
+}
+
+/* ErrorContent */
+.ErrorContent {
+    display: flex;
+}
+
+.ErrorContent_img {
+    height: 32px;
+    width: 32px;
+    margin: 15px;
+}
+
+.ErrorContent_p {
+    white-space: pre-wrap;
+}
+
+/* ErrorClose */
+.Error_button {
+    background: #c0c0c0;
+    border-bottom-color: #000;
+    border-left-color: #FFF;
+    border-right-color: #000;
+    border-top-color: #FFF;
+    border-width: 2px;
+    display: block;
+    font-size: 14px;
+    line-height: 25px;
+    margin: 0 auto;
+}
+
+.Error_button:focus {
+    outline: none;
+}
+
+.Error_button:active {
+    border-bottom-color: #FFF;
+    border-left-color: #000;
+    border-right-color: #FFF;
+    border-style: solid;
+    border-top-color: #000;
+}
