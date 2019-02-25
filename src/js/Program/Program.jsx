@@ -3,11 +3,11 @@ import './Program.css';
 
 import IMAGES from '../images.js';
 
-const ProgramHeader = () => {
+const ProgramHeader = ({program, closeProgram}) => {
     return (
-        <div className='ProgramHeader'>
-            <img src={IMAGES.MY_COMPUTER} className='ProgramHeader_img' />
-            <span className='ProgramHeader_label'>My Computer</span>
+        <div className={`ProgramHeader${program.taskbarButtonSelected ? ' ProgramHeader--selected' : ''}`}>
+            <img src={program.icon} className='ProgramHeader_img' />
+            <span className='ProgramHeader_label'>{program.label}</span>
             <div className='ProgramHeader_buttons'>
                 <button className='ProgramHeader_button--minimize ProgramHeader_button'>
                     <img src={ IMAGES.MINIMIZE } alt='Minimize' />
@@ -15,7 +15,7 @@ const ProgramHeader = () => {
                 <button className='ProgramHeader_button--maximize ProgramHeader_button'>
                     <img src={ IMAGES.MAXIMIZE } alt='Maximize' />
                 </button>
-                <button className='ProgramHeader_button--close ProgramHeader_button'>
+                <button className='ProgramHeader_button--close ProgramHeader_button' onClick={() => closeProgram(program.id)}>
                     <img src={ IMAGES.CLOSE } alt='Close' />
                 </button>
             </div>
@@ -50,9 +50,17 @@ const ProgramContent = () => {
 };
 
 export const Program = (props) => {
+    const { program, closeProgram } = props;
+    const offsetStyle = {
+        bottom: `${70 - program.offset}px`,
+        left: `${program.offset}px`,
+        top: `${30 + program.offset}px`,
+        zIndex: program.taskbarButtonSelected ? 1 : 0
+    };
+
     return (
-        <div className='Program'>
-            <ProgramHeader />
+        <div className='Program' style={offsetStyle} >
+            <ProgramHeader program={program} closeProgram={closeProgram}/>
             <ProgramCommands />
             <ProgramContent />
         </div>
